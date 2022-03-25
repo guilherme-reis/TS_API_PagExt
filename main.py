@@ -2,6 +2,27 @@ import streamlit as st
 import requests
 import json
 
+#Configurações da página
+st.set_page_config(
+     page_title="Pagamentos e Extratos - Tecnospeed",
+     page_icon="🧊",
+     layout="centered",
+     initial_sidebar_state="expanded",
+     menu_items={
+
+     }
+ )
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: visible;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+#Fim configurações da página
+
 with st.form("my_form"):
     cnpjSh = st.text_input('CNPJ da Software House')
     tokenSh = st.text_input('Token da Software House')
@@ -27,7 +48,7 @@ with st.form("my_form"):
             st.success("Sucesso", "Autenticação realizada com sucesso")
             acesso= True
         else:
-            st.error("Autenticação inválida! Confire as informações e tente novamente")
+            st.error("Dados inválidos")
 
 
 st.write("")
